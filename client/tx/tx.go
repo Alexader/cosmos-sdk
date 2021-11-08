@@ -128,12 +128,13 @@ func BroadcastTx(clientCtx client.Context, txf Factory, msgs ...sdk.Msg) error {
 	}
 
 	// broadcast to a Tendermint node
-	res, err := clientCtx.BroadcastTx(txBytes)
+	_, err = clientCtx.BroadcastTx(txBytes)
 	if err != nil {
 		return err
 	}
 
-	return clientCtx.PrintProto(res)
+	return nil
+	//return clientCtx.PrintProto(res)
 }
 
 // WriteGeneratedTxResponse writes a generated unsigned transaction to the
